@@ -17,13 +17,13 @@ public class GatewayConfig {
                         .filters(f -> f.addRequestHeader("Hello", "World"))
                         .uri("http://httpbin.org:80"))
                 .route(P -> P
-                        .path("/api/users/2")
+                        .path("/api/users")
                         .filters(f -> f.hystrix(config -> config.setName("api-test")
                                         .setFallbackUri("forward:/apifailed")))
                         .uri("https://reqres.in/"))
                 .route(em -> em
                         .path("/api/v1/employees")
-                        .filters(emf -> emf.hystrix(config -> config.setName("employee-api")))
+                        .filters(emf -> emf.hystrix(config -> config.setName("employee-api").setFallbackUri("forward:/apifailed")))
                         .uri("http://dummy.restapiexample.com/"))
                 .route(p -> p
                         .host("*.hystrix.com")
@@ -31,4 +31,5 @@ public class GatewayConfig {
                         .uri("http://httpbin.org:80"))
                 .build();
     }
+
 }

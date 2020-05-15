@@ -1,0 +1,6 @@
+---
+applications:
+  - name: cicd-jenkins-pcf
+    instances: 1
+    memory: 800m
+    path: target/hystrix-api.jar

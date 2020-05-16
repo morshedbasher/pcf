@@ -1,6 +1,6 @@
 ---
 applications:
-  - name: cicd-jenkins-pcf
+  - name: heerausa
     instances: 1
     memory: 800m
     path: target/hystrix-api.jar
